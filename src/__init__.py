@@ -1,7 +1,29 @@
 """
-NeoNude - GAN-based image transformation algorithm.
+NeoNude - Modern diffusion-based image transformation.
 
-Built on a modified pix2pixHD architecture using a divide-et-impera approach.
+Uses Stable Diffusion inpainting with SegFormer clothing detection
+for high-quality image-to-image transformation.
 """
 
-__version__ = "1.0.0"
+from .utils import configure_quiet_mode
+
+# Configure quiet mode on import
+configure_quiet_mode()
+
+from .pipeline import NeoNudePipeline, process
+from .config import Config, Options, get_device_info
+from .models import InpaintingModel, ClothingSegmenter
+
+__version__ = "2.0.0"
+__author__ = "Fahim Ahamed"
+__description__ = "Modern diffusion-based image transformation"
+
+__all__ = [
+    "NeoNudePipeline",
+    "process",
+    "Config",
+    "Options",
+    "get_device_info",
+    "InpaintingModel",
+    "ClothingSegmenter",
+]

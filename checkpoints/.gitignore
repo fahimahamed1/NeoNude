@@ -1,0 +1,6 @@
+# Ignore downloaded models
+*/
+
+# But keep README
+!README.md
+!.gitignore

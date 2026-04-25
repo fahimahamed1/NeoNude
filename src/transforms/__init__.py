@@ -1,21 +1,26 @@
 """
-OpenCV image transforms used in the pipeline.
+Image transforms package for NeoNude.
 
-Phase 0: dress -> correct  (color correction)
-Phase 2: mask  -> maskref  (mask refinement)
-Phase 4: maskdet -> maskfin (mask finalization with body annotations)
+Contains:
+- Color correction
+- Mask creation and refinement
+- Body part annotations
 """
 
+from .color import correct_color
+from .mask import (
+    create_clothing_mask_fallback,
+    refine_mask,
+    blend_images,
+    calculate_mask_coverage,
+)
 from .annotation import BodyPart
 
-# Re-export public functions
-from .correct import correct_color          # noqa: F401
-from .maskref import create_maskref         # noqa: F401
-from .maskfin import create_maskfin         # noqa: F401
-
 __all__ = [
-    "BodyPart",
     "correct_color",
-    "create_maskref",
-    "create_maskfin",
+    "create_clothing_mask_fallback",
+    "refine_mask",
+    "blend_images",
+    "calculate_mask_coverage",
+    "BodyPart",
 ]
